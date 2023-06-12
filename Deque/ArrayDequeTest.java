@@ -8,7 +8,7 @@ public class ArrayDequeTest {
     public void addIsEmptySizeTest() {
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
-        deque.ArrayDeque<String> ad1 = new deque.ArrayDeque<String>();
+        deque.ArrayMyDeque<String> ad1 = new deque.ArrayMyDeque<String>();
         assertTrue("A newly initialized LLDeque should be empty", ad1.isEmpty());
 
         ad1.addFirst("front");
@@ -33,7 +33,7 @@ public class ArrayDequeTest {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
-        deque.ArrayDeque<Integer> ad2 = new deque.ArrayDeque<Integer>();
+        deque.ArrayMyDeque<Integer> ad2 = new deque.ArrayMyDeque<Integer>();
         // should be empty
         assertTrue("ad2 should be empty upon initialization", ad2.isEmpty());
 
@@ -53,7 +53,7 @@ public class ArrayDequeTest {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
-        deque.ArrayDeque<Integer> ad2 = new deque.ArrayDeque<>();
+        deque.ArrayMyDeque<Integer> ad2 = new deque.ArrayMyDeque<>();
         ad2.addFirst(3);
 
         ad2.removeLast();
@@ -74,9 +74,9 @@ public class ArrayDequeTest {
     /* Check if you can create LinkedListDeques with different parameterized types*/
     public void multipleParamTest() {
 
-        deque.ArrayDeque<String>  lld1 = new deque.ArrayDeque<String>();
-        deque.ArrayDeque<Double>  lld2 = new deque.ArrayDeque<Double>();
-        deque.ArrayDeque<Boolean> lld3 = new deque.ArrayDeque<Boolean>();
+        deque.ArrayMyDeque<String> lld1 = new deque.ArrayMyDeque<String>();
+        deque.ArrayMyDeque<Double> lld2 = new deque.ArrayMyDeque<Double>();
+        deque.ArrayMyDeque<Boolean> lld3 = new deque.ArrayMyDeque<Boolean>();
 
         lld1.addFirst("string");
         lld2.addFirst(3.14159);
@@ -93,7 +93,7 @@ public class ArrayDequeTest {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
-        deque.ArrayDeque<Integer> lld1 = new deque.ArrayDeque<Integer>();
+        deque.ArrayMyDeque<Integer> lld1 = new deque.ArrayMyDeque<Integer>();
 
         boolean passed1 = false;
         boolean passed2 = false;
@@ -109,7 +109,7 @@ public class ArrayDequeTest {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
-        deque.ArrayDeque<Integer> lld1 = new deque.ArrayDeque<Integer>();
+        deque.ArrayMyDeque<Integer> lld1 = new deque.ArrayMyDeque<Integer>();
         for (int i = 0; i < 1000000; i++) {
             lld1.addLast(i);
         }

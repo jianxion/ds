@@ -1,13 +1,12 @@
 package deque;
-
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Iterable<T> {
+public class ArrayMyDeque<T> implements Iterable<T>, deque.myDeque<T> {
     private T[] items;
     private int size;
 
     /* create an empty list*/
-    public ArrayDeque() {
+    public ArrayMyDeque() {
         items = (T[]) new Object[8];
         size = 0;
     }
@@ -28,10 +27,13 @@ public class ArrayDeque<T> implements Iterable<T> {
         items = newdeque;
     }
 
+    @Override
     public void addFirst(T item) {
         insert(item, 0);
     }
 
+
+    @Override
     public void addLast(T item) {
         if (size == items.length) {
             resize(size + 1);
@@ -40,14 +42,17 @@ public class ArrayDeque<T> implements Iterable<T> {
         size += 1;
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public T get(int i) {
         return items[i];
     }
 
+    @Override
     public void printDeque() {
         for (int i = 0; i < size; i += 1) {
             System.out.print(items[i] + " ");
@@ -55,6 +60,7 @@ public class ArrayDeque<T> implements Iterable<T> {
         System.out.println();
     }
 
+    @Override
     public boolean isEmpty() {
         if (size == 0) {
             return true;
@@ -66,6 +72,7 @@ public class ArrayDeque<T> implements Iterable<T> {
         return items[0];
     }
 
+    @Override
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -78,6 +85,7 @@ public class ArrayDeque<T> implements Iterable<T> {
         return temp;
     }
 
+    @Override
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -132,7 +140,7 @@ public class ArrayDeque<T> implements Iterable<T> {
         if (other.getClass() != this.getClass()){
             return false;
         }
-        if (other instanceof ArrayDeque otherad){
+        if (other instanceof deque.ArrayMyDeque otherad){
             if (otherad.size() != this.size()){
                 return false;
             }
@@ -147,7 +155,7 @@ public class ArrayDeque<T> implements Iterable<T> {
 
 
     public static void main(String[] args) {
-        ArrayDeque<String> myad = new ArrayDeque<String>();
+        deque.ArrayMyDeque<String> myad = new deque.ArrayMyDeque<String>();
         myad.addLast("middle");
         myad.addFirst("front");
         myad.addLast("back");
@@ -161,7 +169,7 @@ public class ArrayDeque<T> implements Iterable<T> {
         for (String x : myad) {
             System.out.print(x);
         }
-        ArrayDeque<String> newmyad = new ArrayDeque<String>();
+        deque.ArrayMyDeque<String> newmyad = new deque.ArrayMyDeque<String>();
         newmyad.addLast("middle");
         newmyad.addFirst("front");
         newmyad.addLast("ba");

@@ -1,13 +1,12 @@
+package deque;
 import java.util.Iterator;
 
-import static java.lang.System.in;
-
-public class LinkedListDeque<Blorp> implements Iterable<Blorp> {
+public class LinkedListDeque<T> implements Iterable<T>{
     private class Node {
-        public Blorp item;
+        public T item;
         public Node next;
 
-        public Node(Blorp i, Node n) {
+        public Node(T i, Node n) {
             item = i;
             next = n;
         }
@@ -23,7 +22,7 @@ public class LinkedListDeque<Blorp> implements Iterable<Blorp> {
         size = 0;
     }
 
-    public LinkedListDeque(Blorp x) {
+    public LinkedListDeque(T x) {
         sentinel = new Node(null, null);
         sentinel.next = new Node(x, null);
         size = 1;
@@ -33,7 +32,7 @@ public class LinkedListDeque<Blorp> implements Iterable<Blorp> {
      *  the list. If position is greater than the
      *  size of the list, inserts at the end instead.
      */
-    public void insert(Blorp item, int position) {
+    public void insert(T item, int position) {
         Node p = sentinel;
         while (position > 1 && p.next != null) {
             position--;
@@ -44,13 +43,13 @@ public class LinkedListDeque<Blorp> implements Iterable<Blorp> {
     }
 
     /** Adds x to the front of the list. */
-    public void addFirst(Blorp x) {
+    public void addFirst(T x) {
         sentinel.next = new Node(x, sentinel.next);
         size = size + 1;
     }
 
     /** Adds x to the end of the list. */
-    public void addLast(Blorp x) {
+    public void addLast(T x) {
         size = size + 1;
 
         Node p = sentinel;
@@ -64,7 +63,7 @@ public class LinkedListDeque<Blorp> implements Iterable<Blorp> {
     }
 
     /** Returns the first item in the list. */
-    public Blorp getFirst() {
+    public T getFirst() {
         return sentinel.next.item;
     }
 
@@ -80,17 +79,17 @@ public class LinkedListDeque<Blorp> implements Iterable<Blorp> {
     }
 
     /** Returns last item */
-    public Blorp getLast() {
+    public T getLast() {
         Node back = getLastNode();
         return back.item;
     }
 
     /** Returns the ith item in the list. */
-    public Blorp get(int i) {
+    public T get(int i) {
         return get(i, sentinel.next);
     }
 
-    private Blorp get(int i, Node p) {
+    private T get(int i, Node p) {
         if (i == 0) {
             return p.item;
         }
@@ -103,7 +102,7 @@ public class LinkedListDeque<Blorp> implements Iterable<Blorp> {
     }
 
     /** Deletes and returns last item. */
-    public Blorp removeLast() {
+    public T removeLast() {
         Node back = getLastNode();
         if (back == sentinel) {
             return null;
@@ -127,7 +126,7 @@ public class LinkedListDeque<Blorp> implements Iterable<Blorp> {
         }
     }
 
-    private class myLinkedListDequeIt implements Iterator<Blorp> {
+    private class myLinkedListDequeIt implements Iterator<T> {
         private Node wizPos;
         public myLinkedListDequeIt(){
             wizPos = sentinel.next;
@@ -137,18 +136,18 @@ public class LinkedListDeque<Blorp> implements Iterable<Blorp> {
             return wizPos != null;
         }
 
-        public Blorp next(){
-            Blorp returnItem = wizPos.item;
+        public T next(){
+            T returnItem = wizPos.item;
             wizPos = wizPos.next;
             return returnItem;
         }
     }
 
-    public Iterator<Blorp> iterator() {
+    public Iterator<T> iterator() {
         return new myLinkedListDequeIt();
     }
 
-    public boolean contains(Blorp x) {
+    public boolean contains(T x) {
         Node p = sentinel.next;
         while (p != null) {
             if (p.item.equals(x)) {
@@ -174,7 +173,7 @@ public class LinkedListDeque<Blorp> implements Iterable<Blorp> {
             if ( otherlld.size() != this.size()){
                 return false;
             }
-            for (Blorp x: this) {
+            for (T x: this) {
                 if (!otherlld.contains(x)) {
                     return false;
                 }
